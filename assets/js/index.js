@@ -46,16 +46,23 @@ window.addEventListener("DOMContentLoaded", function(){
     }
     
     
-    window.addEventListener("click", function(){
-        let article = document.querySelector("article");
-        let selected = article.classList.contains("selected");
+    let article = document.querySelectorAll("article");
+    
+    for(let i = 0; i < article.length; i++){
+        article[i].addEventListener("click", function(){
         
-        if(selected !== "selected"){
-            article.classList.add("selected");
-        }else if(selected === "selected"){
-            article.classList.remove("selected");
-        }
-    })
+            let selected = article[i].classList.toggle("selected");
+            
+        })
+        
+    }
+    
+    
+    
+    
+    
+    
+    
     
     
     
