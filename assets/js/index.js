@@ -1,4 +1,5 @@
 import { Ingredient } from './classes/ingredient.js';
+import { Pizza } from './classes/pizza.js';
 
 window.addEventListener("DOMContentLoaded", function(){
     
@@ -46,16 +47,24 @@ window.addEventListener("DOMContentLoaded", function(){
     }
     
     
-    let article = document.querySelectorAll("article");
-    
-    for(let i = 0; i < article.length; i++){
-        article[i].addEventListener("click", function(){
+    let articleAll = document.querySelectorAll("article");
+    let pizza = new Pizza();
+    for(let i = 0; i < articleAll.length; i++){
+        articleAll[i].addEventListener("click", function(){
         
-            let selected = article[i].classList.toggle("selected");
+            articleAll[i].classList.toggle("selected");
             
         })
         
+        if(articleAll[i].classList.toggle("selected")){
+            pizza.removeIngredient(articleAll[i]);
+            
+        }else{
+            pizza.addIngredient(articleAll[i]);
+        }
     }
+    
+    
     
     
     
@@ -69,24 +78,3 @@ window.addEventListener("DOMContentLoaded", function(){
     
 });
 
-/*<li>
-    <article>
-        <header>
-            <figure>
-                <img src="assets/img/bacon.png" alt="Bacon" />
-            </figure>
-            <h3>Bacon</h3>
-        </header>
-    </article>
-</li>
-<li>
-    <article class="selected">
-        <header>
-            <figure>
-                <img src="assets/img/tomato.png" alt="Tomate" />
-            </figure>
-            <h3>Tomate</h3>
-        </header>
-    </article>
-</li>
-*/
